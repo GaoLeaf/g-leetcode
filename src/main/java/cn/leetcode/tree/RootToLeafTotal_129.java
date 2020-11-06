@@ -2,6 +2,9 @@ package cn.leetcode.tree;
 
 import org.junit.Test;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * <B>给定一个二叉树，它的每个结点都存放一个 0-9 的数字，每条从根到叶子节点的路径都代表一个数字。</B>
  *
@@ -30,15 +33,18 @@ public class RootToLeafTotal_129 {
 
         // 深度优先搜索法
         System.out.println(dfs(treeNode1, 0));
+        System.out.println(bfs(treeNode1));
         System.out.println(dfs(treeNode4, 0));
+        System.out.println(bfs(treeNode4));
         System.out.println(dfs(treeNode5, 0));
+        System.out.println(bfs(treeNode5));
 
     }
 
     /**
      * 深度优先搜索法 <br/>
-     * 时间复杂度 O(n)
-     * 空间复杂度 O(n)
+     * 时间复杂度 递归了n个节点 O(n)
+     * 空间复杂度 二叉树的高度 O(n)
      */
     public int dfs(TreeNode treeNode, int sum) {
 
@@ -56,20 +62,51 @@ public class RootToLeafTotal_129 {
 
     }
 
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
+    /**
+     * 广度优先搜索法 <br/>
+     * 时间复杂度 O(n)
+     * 空间复杂度 O(n)
+     */
+    public int bfs(TreeNode treeNode) {
 
-        TreeNode(int x) {
-            val = x;
+        if (treeNode == null) {
+            return 0;
         }
 
-        TreeNode(TreeNode left, TreeNode right, int x) {
-            this.left = left;
-            this.right = right;
-            this.val = x;
+        Queue<TreeNode> nodeQueue = new LinkedList<>();
+        Queue<Integer> numQueue = new LinkedList<>();
+
+        nodeQueue.offer(treeNode);
+        numQueue.offer(treeNode.val);
+
+        int sum = 0;
+
+        while (!nodeQueue.isEmpty()) {
+
+            TreeNode node = nodeQueue.poll();
+            int num = numQueue.poll();
+
+            TreeNode left = node.left;
+            TreeNode right = node.right;
+
+            if (left == null && right == null) {
+                sum += num;
+            } else {
+
+                if (left != null) {
+                    nodeQueue.offer(left);
+                    numQueue.offer(num * 10 + left.val);
+                }
+
+                if (right != null) {
+                    nodeQueue.offer(right);
+                    numQueue.offer(num * 10 + right.val);
+                }
+            }
+
         }
+
+        return sum;
     }
 
 }
