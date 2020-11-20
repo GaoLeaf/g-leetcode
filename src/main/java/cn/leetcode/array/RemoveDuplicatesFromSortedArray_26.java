@@ -24,7 +24,11 @@ public class RemoveDuplicatesFromSortedArray_26 {
 
     }
 
-    // 双指针法
+    /**
+     * 双指针法
+     * 时间复杂度：O(n),假设数组长度是n，那么i最多走n步。
+     * 空间复杂度：O(1)
+     */
     public static int removeDuplicates(int[] nums) {
 
         if (nums.length == 0) {
@@ -35,9 +39,7 @@ public class RemoveDuplicatesFromSortedArray_26 {
         for (int j = 1; j < nums.length; j++) {
             if (nums[i] != nums[j]) {
                 i++;
-                if (i < j) {
-                    nums[i] = nums[j];
-                }
+                nums[i] = nums[j];
             }
         }
 
@@ -46,4 +48,5 @@ public class RemoveDuplicatesFromSortedArray_26 {
         return i + 1;
 
     }
+
 }
