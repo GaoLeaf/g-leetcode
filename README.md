@@ -2,8 +2,8 @@
 LeetCode 刷题记录
 
 #### 1、 简介
-1. 树相关：cn.leetcode.tree
-
+1. 树相关: cn.leetcode.tree
+2. 数组相关: cn.leetcode.array
 
 #### 2、 详细
 1. 树相关
@@ -12,3 +12,6 @@ LeetCode 刷题记录
     - 二叉搜索树中的搜索(BST) - 700
     - 二叉搜索树的范围和 - 938
 
+2. 数组相关
+    - 删除排序数组中的重复项 - 26
+    
