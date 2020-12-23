@@ -1,4 +1,4 @@
-package cn.leetcode.array;
+package cn.leetcode.string;
 
 import org.junit.Test;
 
