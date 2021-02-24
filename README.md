@@ -4,6 +4,8 @@ LeetCode 刷题记录
 #### 1、 简介
 1. 树相关: cn.leetcode.tree
 2. 数组相关: cn.leetcode.array
+3. 字符串相关: cn.leetcode.string
+4. 其他: cn.leetcode.other
 
 #### 2、 详细
 1. 树相关
@@ -17,6 +19,7 @@ LeetCode 刷题记录
 2. 数组相关
     - 删除排序数组中的重复项 - 26
     - 存在重复元素 - 217
+    - 翻转图像 - 832
     - 柠檬水找零 - 860
     
 3. 字符串

@@ -22,9 +22,17 @@ public class FlippingAnImage_832 {
 
         int[][] A = {{1, 1, 0}, {1, 0, 1}, {0, 0, 0}};
         print(flipAndInvertImage(A));
+        System.out.println("=====================================分割线=====================================");
+        int[][] AA = {{1, 1, 0}, {1, 0, 1}, {0, 0, 0}};
+        print(flipAndInvertImage_V2(AA));
 
-        int[][] A1 = {{1,1,0,0},{1,0,0,1},{0,1,1,1},{1,0,1,0}};
+        System.out.println("=====================================+分割线+=====================================");
+
+        int[][] A1 = {{1, 1, 0, 0}, {1, 0, 0, 1}, {0, 1, 1, 1}, {1, 0, 1, 0}};
         print(flipAndInvertImage(A1));
+        System.out.println("=====================================分割线=====================================");
+        int[][] A2 = {{1, 1, 0, 0}, {1, 0, 0, 1}, {0, 1, 1, 1}, {1, 0, 1, 0}};
+        print(flipAndInvertImage_V2(A2));
 
     }
 
@@ -40,14 +48,47 @@ public class FlippingAnImage_832 {
         for (int i = 0; i < A.length; i++) {
             int[] a1 = A[i];
             int len = a1.length - 1;
+            // 数组元素水平翻转，只需循环一半即可水平翻转整个子数组
             for (int j = 0; j <= len / 2; j++) {
 
                 int h = A[i][j];
                 int t = A[i][len - j];
 
+                // 数值反转，没有位运算高效
                 A[i][j] = 1 - t;
                 A[i][len - j] = 1 - h;
             }
+        }
+
+        return A;
+    }
+
+    /**
+     * 循环 + 双指针
+     * @param A
+     * @return
+     */
+    public int[][] flipAndInvertImage_V2(int[][] A) {
+
+        for (int i = 0; i < A.length; i++) {
+            int[] a1 = A[i];
+
+            int left = 0, right = a1.length - 1;
+            while (left < right) {
+                // 若两个数值一样，水平翻转和反转后，数值不变；
+                // 若两个数值不一样，水平翻转和反转后，数值被反转
+                if (A[i][left] == A[i][right]) {
+                    A[i][left] ^= 1;
+                    A[i][right] ^= 1;
+                }
+                left++;
+                right--;
+            }
+            // 若两个数值下标一致，表示指向相同中间元素，需要对其数值反转
+            if (left == right) {
+                A[i][left] ^= 1;
+            }
+
         }
 
         return A;
