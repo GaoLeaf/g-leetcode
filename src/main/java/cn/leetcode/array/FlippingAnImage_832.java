@@ -1,5 +1,9 @@
 package cn.leetcode.array;
 
+import org.junit.Test;
+
+import java.util.Arrays;
+
 /**
  * <B>翻转图像</B>
  *
@@ -13,9 +17,46 @@ package cn.leetcode.array;
  */
 public class FlippingAnImage_832 {
 
+    @Test
+    public void test() {
+
+        int[][] A = {{1, 1, 0}, {1, 0, 1}, {0, 0, 0}};
+        print(flipAndInvertImage(A));
+
+        int[][] A1 = {{1,1,0,0},{1,0,0,1},{0,1,1,1},{1,0,1,0}};
+        print(flipAndInvertImage(A1));
+
+    }
+
+    /**
+     * 暴力翻转 <br/>
+     * 一维数组循环，二维数组拆分成2部分，翻转后替换数值
+     *
+     * @param A
+     * @return
+     */
     public int[][] flipAndInvertImage(int[][] A) {
 
-        return null;
+        for (int i = 0; i < A.length; i++) {
+            int[] a1 = A[i];
+            int len = a1.length - 1;
+            for (int j = 0; j <= len / 2; j++) {
+
+                int h = A[i][j];
+                int t = A[i][len - j];
+
+                A[i][j] = 1 - t;
+                A[i][len - j] = 1 - h;
+            }
+        }
+
+        return A;
+    }
+
+    public void print(int[][] ints) {
+        for (int[] i : ints) {
+            System.out.println(Arrays.toString(i));
+        }
     }
 
 }
