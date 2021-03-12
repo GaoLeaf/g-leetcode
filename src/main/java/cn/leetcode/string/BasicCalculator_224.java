@@ -30,6 +30,12 @@ public class BasicCalculator_224 {
 
     }
 
+    /**
+     * 时间复杂度： 最好 O(1) 最坏 O(n)  平均 O(n)，取决于字符串的长度
+     * 空间复杂度： 最好 O(1) 最坏 O(n)  平均 O(n)，取决于栈的空间
+     * @param s
+     * @return
+     */
     public int calculate(String s) {
 
         Deque<Integer> stack = new LinkedList<>();
