@@ -63,6 +63,9 @@ public class RightfulBracket {
      * 1. 当遇到 ( 进行压栈操作
      * 2. 当遇到 ) 进行出栈操作
      *
+     * 时间复杂度：O(n)
+     * 空间复杂度：O(n)
+     *
      * @param str
      */
     public boolean isVaild(String str) {
@@ -104,6 +107,9 @@ public class RightfulBracket {
      * 1. 当遇到 ( 进行 +1
      * 2. 当遇到 ) 进行 -1
      *
+     * 时间复杂度： O(n)
+     * 空间复杂度： O(1)
+     *
      * @param str
      * @return
      */
@@ -120,15 +126,15 @@ public class RightfulBracket {
             return false;
         }
 
-        int count = 0;
+        int count = 0; // 计数器
         for (int i = 0; i < len; i++) {
 
             char c = str.charAt(i);
             if (c == '(') {
                 ++count;
             } else if (c == ')') {
-                // 检查栈是否为空，边界值
-                if (count == 0) {
+                // 查看计数器是否大于0
+                if (count <= 0) {
                     return false;
                 }
                 -- count;
